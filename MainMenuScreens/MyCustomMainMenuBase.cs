@@ -130,7 +130,7 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 				m_warningNotifications.Add(MyCommonTexts.PerformanceWarningHeading_ExperimentalMode);
 			}
 		}
-		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), "MenuPacks\\Textures\\MainMenu\\Minecraft-Logo-2011.png");
+		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), "MenuPacks\\Textures\\MainMenu\\Kerbal_Space_Program_High_Res_Logo.png");
 		DrawPerformanceWarning();
 		if (DrawBuildInformation)
 		{
@@ -141,11 +141,11 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 		return true; 
 	}
 
-	public void DrawGameLogo(float transitionAlpha, Vector2 position, string texturepath)
+	public void DrawGameLogo(float transitionAlpha, Vector2 position, float width, float length, string texturepath)
 	{
 		String texture = Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath));
 		Color color = Color.White * transitionAlpha;
-		MyGuiManager.DrawSpriteBatch(texture, position, new Vector2(0.5f, 0.5f), color, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP);
+		MyGuiManager.DrawSpriteBatch(texture, position, new Vector2(width / 800f, length), color, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP);
 	}
 	public override bool CloseScreen(bool isUnloading = false)
 	{
