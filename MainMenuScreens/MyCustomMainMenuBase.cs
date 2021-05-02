@@ -20,6 +20,8 @@ using VRage.Game;
 using VRage.Input;
 using VRage.Utils;
 using VRageMath;
+using System.IO;
+using VRage.FileSystem;
 
 public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 {
@@ -32,6 +34,9 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 	protected bool m_pauseGame;
 
 	protected bool m_musicPlayed;
+
+	public string GameLogoTexture = Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, "MenuPacks\\Textures\\MainMenu\\Minecraft-Logo-2011.png"));
+
 
 	private static bool m_firstLoadup = true;
 
@@ -125,7 +130,7 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 				m_warningNotifications.Add(MyCommonTexts.PerformanceWarningHeading_ExperimentalMode);
 			}
 		}
-		MyGuiSandbox.DrawGameLogoHandler(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68));
+		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), "MenuPacks\\Textures\\MainMenu\\Minecraft-Logo-2011.png");
 		DrawPerformanceWarning();
 		if (DrawBuildInformation)
 		{
@@ -133,9 +138,15 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 			DrawSteamStatus();
 			DrawAppVersion();
 		}
-		return true;
+		return true; 
 	}
 
+	public void DrawGameLogo(float transitionAlpha, Vector2 position, string texturepath)
+	{
+		String texture = Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath));
+		Color color = Color.White * transitionAlpha;
+		MyGuiManager.DrawSpriteBatch(texture, position, new Vector2(0.5f, 0.5f), color, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP);
+	}
 	public override bool CloseScreen(bool isUnloading = false)
 	{
 		if (m_pauseGame && !Sync.MultiplayerActive)

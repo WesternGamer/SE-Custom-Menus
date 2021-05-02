@@ -53,8 +53,6 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 		: base(pauseGame)
 	{
 		m_myBadgeHelper = new MyBadgeHelper();
-		//Checks if the game is at the main menu or pause menu. Adds the background screen if the game is at the main menu.
-		
 		//Draws the badges under the Space Engineers Logo
 		MyGuiSandbox.DrawGameLogoHandler = m_myBadgeHelper.DrawGameLogo;
 		//Decides if the game should use keyboard and mouse controls or Xbox Controls.
