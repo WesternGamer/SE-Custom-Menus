@@ -35,7 +35,6 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 
 	protected bool m_musicPlayed;
 
-	public string GameLogoTexture = Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, "MenuPacks\\Textures\\MainMenu\\Minecraft-Logo-2011.png"));
 
 
 	private static bool m_firstLoadup = true;
@@ -130,8 +129,8 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 				m_warningNotifications.Add(MyCommonTexts.PerformanceWarningHeading_ExperimentalMode);
 			}
 		}
-		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), "MenuPacks\\Textures\\MainMenu\\Kerbal_Space_Program_High_Res_Logo.png");
-		DrawPerformanceWarning();
+		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 1f, 1f, "MenuPacks\\Textures\\MainMenu\\Kerbal_Space_Program_High_Res_Logo.png");
+		DrawPerformanceWarning(0, 0, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER, "MenuPacks\\Textures\\hud_bg_performance.png", 1f, 1f);
 		if (DrawBuildInformation)
 		{
 			DrawObfuscationStatus();
@@ -141,11 +140,10 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 		return true; 
 	}
 
-	public void DrawGameLogo(float transitionAlpha, Vector2 position, float width, float length, string texturepath)
+	public void DrawGameLogo(float transitionAlpha, Vector2 position, MyGuiDrawAlignEnum alignment, float width, float length, string texturepath)
 	{
-		String texture = Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath));
 		Color color = Color.White * transitionAlpha;
-		MyGuiManager.DrawSpriteBatch(texture, position, new Vector2(width / 800f, length), color, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP);
+		MyGuiManager.DrawSpriteBatch(Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath)), position, new Vector2(width / 800f, length), color, alignment);
 	}
 	public override bool CloseScreen(bool isUnloading = false)
 	{
@@ -209,7 +207,7 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 		return base.GetTransitionOpeningTime();
 	}
 
-	private void DrawPerformanceWarning()
+	private void DrawPerformanceWarning(int xPosition, int yPosition, MyGuiDrawAlignEnum alignment, string texturepath, float length, float width)
 	{
 		if (!Controls.Contains(m_warningLabel))
 		{
@@ -217,10 +215,10 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 		}
 		if (m_warningNotifications.Count != 0)
 		{
-			Vector2 vector = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, 4, 42);
-			vector -= new Vector2(MyGuiConstants.TEXTURE_HUD_BG_PERFORMANCE.SizeGui.X / 1.5f, 0f);
-			MyGuiPaddedTexture tEXTURE_HUD_BG_PERFORMANCE = MyGuiConstants.TEXTURE_HUD_BG_PERFORMANCE;
-			MyGuiManager.DrawSpriteBatch(tEXTURE_HUD_BG_PERFORMANCE.Texture, vector, tEXTURE_HUD_BG_PERFORMANCE.SizeGui / 1.5f, Color.White, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_CENTER);
+			Vector2 position = MyGuiManager.ComputeFullscreenGuiCoordinate(alignment, xPosition, yPosition);
+			position -= new Vector2(MyGuiConstants.TEXTURE_HUD_BG_PERFORMANCE.SizeGui.X / 1.5f, 0f);
+			
+			MyGuiManager.DrawSpriteBatch(Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath)), position, new Vector2(length / 1.5f, width / 1.5f), Color.White, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_CENTER);
 			StringBuilder stringBuilder = new StringBuilder();
 			if (MyInput.Static.IsJoystickLastUsed)
 			{
@@ -230,10 +228,10 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 			{
 				stringBuilder.AppendFormat(MyCommonTexts.PerformanceWarningCombination, MyGuiSandbox.GetKeyName(MyControlsSpace.HELP_SCREEN));
 			}
-			MyGuiManager.DrawString("White", MyTexts.GetString(m_warningNotifications[0]), vector + new Vector2(0.09f, -0.011f), 0.7f, null, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER);
-			MyGuiManager.DrawString("White", stringBuilder.ToString(), vector + new Vector2(0.09f, 0.018f), 0.6f, null, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER);
+			MyGuiManager.DrawString("White", MyTexts.GetString(m_warningNotifications[0]), position + new Vector2(0.09f, -0.011f), 0.7f, null, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER);
+			MyGuiManager.DrawString("White", stringBuilder.ToString(), position + new Vector2(0.09f, 0.018f), 0.6f, null, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER);
 			stringBuilder.Clear();
-			MyGuiManager.DrawString("White", stringBuilder.AppendFormat("({0})", m_warningNotifications.Count).ToString(), vector + new Vector2(0.177f, -0.023f), 0.55f, null, MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_CENTER);
+			MyGuiManager.DrawString("White", stringBuilder.AppendFormat("({0})", m_warningNotifications.Count).ToString(), position + new Vector2(0.177f, -0.023f), 0.55f, null, MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_CENTER);
 			m_warningNotifications.RemoveAt(0);
 		}
 	}
