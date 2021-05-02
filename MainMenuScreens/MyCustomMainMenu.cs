@@ -58,28 +58,12 @@ public class MyCustomMainMenu : MyCustomMainMenuBase
 		: base(pauseGame)
 	{
 		m_myBadgeHelper = new MyBadgeHelper();
-		//Checks if the game is at the main menu or pause menu. Adds the background screen if the game is at the main menu.
-		if (!pauseGame && MyGuiScreenGamePlay.Static == null)
-		{
-			AddBackgroundVideo();
-		}
 		//Draws the badges under the Space Engineers Logo
 		MyGuiSandbox.DrawGameLogoHandler = m_myBadgeHelper.DrawGameLogo;
 		//Decides if the game should use keyboard and mouse controls or Xbox Controls.
 		MyInput.Static.IsJoystickLastUsed = MySandboxGame.Config.ControllerDefaultOnStart || MyPlatformGameSettings.CONTROLLER_DEFAULT_ON_START;
 	}
-	/// <summary>
-	/// Plays the background video and also checks if it is enabled.
-	/// </summary>
-	private void AddBackgroundVideo()
-	{
-		//Checks if the main menu background video is enabled at a internal config.
-		if (MyFakes.ENABLE_MENU_VIDEO_BACKGROUND)
-		{
-			//What actually plays the background video.
-			MyGuiSandbox.AddScreen(m_backgroundScreen = MyGuiScreenIntroVideo.CreateBackgroundScreen());
-		}
-	}
+	
 	/// <summary>
 	/// Draws the buttons in the main menu or pause menu. Also draws the Keen Software House logo and controllor hints.
 	/// </summary>

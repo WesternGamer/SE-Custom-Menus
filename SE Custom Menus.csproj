@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>C:\Users\Kevin Nguyen\Downloads\Harmony.2.0.4.0\net472\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="EmptyKeys.UserInterface">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\EmptyKeys.UserInterface.dll</HintPath>
     </Reference>
@@ -84,6 +87,7 @@
     <Compile Include="MainMenuScreens\MyCustomMainMenu.cs" />
     <Compile Include="MainMenuScreens\MyCustomMainMenuBase.cs" />
     <Compile Include="MyOldOptionsAccessMenu.cs" />
+    <Compile Include="Patch1.cs" />
     <Compile Include="PluginMenus\MyOldButtonsAccessMenu.cs" />
     <Compile Include="MyCustomOptionsMenu.cs" />
     <Compile Include="MainMenuScreens\MyOldMainMenu.cs" />

@@ -54,36 +54,22 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 	{
 		m_myBadgeHelper = new MyBadgeHelper();
 		//Checks if the game is at the main menu or pause menu. Adds the background screen if the game is at the main menu.
-		if (!pauseGame && MyGuiScreenGamePlay.Static == null)
-		{
-			AddBackgroundVideo();
-		}
+		
 		//Draws the badges under the Space Engineers Logo
 		MyGuiSandbox.DrawGameLogoHandler = m_myBadgeHelper.DrawGameLogo;
 		//Decides if the game should use keyboard and mouse controls or Xbox Controls.
 		MyInput.Static.IsJoystickLastUsed = MySandboxGame.Config.ControllerDefaultOnStart || MyPlatformGameSettings.CONTROLLER_DEFAULT_ON_START;
 	}
 
-	/// <summary>
-	/// Plays the background video and also checks if it is enabled.
-	/// </summary>
-	private void AddBackgroundVideo()
-	{
-		//Checks if the main menu background video is enabled at a internal config.
-		if (MyFakes.ENABLE_MENU_VIDEO_BACKGROUND)
-		{
-			//What actually plays the background video.
-			MyGuiSandbox.AddScreen(m_backgroundScreen = MyGuiScreenIntroVideo.CreateBackgroundScreen());
-		}
-	}
 
 	public override void RecreateControls(bool constructor)
 	{
 		base.RecreateControls(constructor);
-		if (!m_pauseGame)
-		{
+		
 			m_elemtents = new MyGuiControlElementGroup();
 			m_elemtents.HighlightChanged += OnHighlightChange;
+		if (!m_pauseGame)
+		{
 			if (MyGuiScreenGamePlay.Static == null)
 			{
 				MyGuiControlButton button = null;
@@ -285,111 +271,163 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 
 
 
+		if (m_pauseGame)
+		{
+			MyGuiControlButton button8 = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlButton)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonSave))
+						button8 = (MyGuiControlButton)c;
+				}
+			}
+			if (button8 != null)
+			{
+				int index = Controls.IndexOf(button8);
+				MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonContinueGame, NullButtonAction);
+				Controls.Add(newGameButton);
+				m_elemtents.Add(newGameButton);
+				newGameButton.Name = button8.Name;
+				Controls[index] = newGameButton;
+				newGameButton.SetToolTip(button8.Tooltips);
+			}
+			MyGuiControlButton button9 = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlButton)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.LoadScreenButtonSaveAs))
+						button9 = (MyGuiControlButton)c;
+				}
+			}
+			if (button9 != null)
+			{
+				int index = Controls.IndexOf(button9);
+				MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
+				Controls.Add(newGameButton);
+				m_elemtents.Add(newGameButton);
+				newGameButton.Name = button9.Name;
+				Controls[index] = newGameButton;
+				newGameButton.SetToolTip(button9.Tooltips);
+			}
+			MyGuiControlButton button10 = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlButton)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonPlayers))
+						button10 = (MyGuiControlButton)c;
+				}
+			}
+			if (button10 != null)
+			{
+				int index = Controls.IndexOf(button10);
+				MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
+				Controls.Add(newGameButton);
+				m_elemtents.Add(newGameButton);
+				newGameButton.Name = button10.Name;
+				Controls[index] = newGameButton;
+				newGameButton.SetToolTip(button10.Tooltips);
+			}
+			MyGuiControlButton button11 = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlButton)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonOptions))
+						button11 = (MyGuiControlButton)c;
+				}
+			}
+			if (button11 != null)
+			{
+				int index = Controls.IndexOf(button11);
+				MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
+				Controls.Add(newGameButton);
+				m_elemtents.Add(newGameButton);
+				newGameButton.Name = button11.Name;
+				Controls[index] = newGameButton;
+				newGameButton.SetToolTip(button11.Tooltips);
+			}
+			MyGuiControlButton button12 = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlButton)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonExitToMainMenu))
+						button12 = (MyGuiControlButton)c;
+				}
+			}
+			if (button12 != null)
+			{
+				int index = Controls.IndexOf(button12);
+				MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
+				Controls.Add(newGameButton);
+				m_elemtents.Add(newGameButton);
+				newGameButton.Name = button12.Name;
+				Controls[index] = newGameButton;
+				newGameButton.SetToolTip(button12.Tooltips);
+			}
+			MyGuiControlNews News = null;
+			foreach (var c in Controls)
+			{
+				if (c is MyGuiControlNews)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlNews)c).Position == MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM) - 5f * MyGuiConstants.MENU_BUTTONS_POSITION_DELTA)
+						News = (MyGuiControlNews)c;
+				}
+			}
+			if (News != null)
+			{
+				int index = Controls.IndexOf(News);
+				News = new MyGuiControlNews
+				{
+					Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
+					Size = new Vector2(0.4f, 0.28f),
+					OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
+				};
+				Controls.Add(News);
+				float num = News.Size.X - 0.004f;
+				float num2 = 0.407226563f;
+				float num3 = num * num2 * 1.33333337f;
+				Vector2 size = new Vector2(News.Size.X, num3 + 0.052f);
+				Controls[index] = News;
 
-		MyGuiControlButton button8 = null;
-		foreach (var c in Controls)
-		{
-			if (c is MyGuiControlButton)
+			}
+			MyGuiControlDLCBanners DlcBanners = null;
+			foreach (var c in Controls)
 			{
-				m_elemtents.Add(c);
-				if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonSave))
-					button8 = (MyGuiControlButton)c;
+				if (c is MyGuiControlDLCBanners)
+				{
+					m_elemtents.Add(c);
+					if (((MyGuiControlDLCBanners)c).Visible == false)
+						DlcBanners = (MyGuiControlDLCBanners)c;
+				}
+			}
+			if (DlcBanners != null)
+			{
+				int index = Controls.IndexOf(DlcBanners);
+				DlcBanners = new MyGuiControlDLCBanners
+				{
+					Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
+					Size = new Vector2(0.4f, 0.28f),
+					OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
+				};
+				Controls.Add(DlcBanners);
+				float num = DlcBanners.Size.X - 0.004f;
+				float num2 = 0.407226563f;
+				float num3 = num * num2 * 1.33333337f;
+				Vector2 size = new Vector2(DlcBanners.Size.X, num3 + 0.052f);
+				Controls[index] = DlcBanners;
 			}
 		}
-		if (button8 != null)
-		{
-			int index = Controls.IndexOf(button8);
-			MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonContinueGame, NullButtonAction);
-			Controls.Add(newGameButton);
-			m_elemtents.Add(newGameButton);
-			newGameButton.Name = button8.Name;
-			Controls[index] = newGameButton;
-			newGameButton.SetToolTip(button8.Tooltips);
-		}
-		MyGuiControlButton button9 = null;
-		foreach (var c in Controls)
-		{
-			if (c is MyGuiControlButton)
-			{
-				m_elemtents.Add(c);
-				if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.LoadScreenButtonSaveAs))
-					button9 = (MyGuiControlButton)c;
-			}
-		}
-		if (button9 != null)
-		{
-			int index = Controls.IndexOf(button9);
-			MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
-			Controls.Add(newGameButton);
-			m_elemtents.Add(newGameButton);
-			newGameButton.Name = button9.Name;
-			Controls[index] = newGameButton;
-			newGameButton.SetToolTip(button9.Tooltips);
-		}
-		MyGuiControlButton button10 = null;
-		foreach (var c in Controls)
-		{
-			if (c is MyGuiControlButton)
-			{
-				m_elemtents.Add(c);
-				if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonPlayers))
-					button10 = (MyGuiControlButton)c;
-			}
-		}
-		if (button10 != null)
-		{
-			int index = Controls.IndexOf(button10);
-			MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
-			Controls.Add(newGameButton);
-			m_elemtents.Add(newGameButton);
-			newGameButton.Name = button10.Name;
-			Controls[index] = newGameButton;
-			newGameButton.SetToolTip(button10.Tooltips);
-		}
-		MyGuiControlButton button11 = null;
-		foreach (var c in Controls)
-		{
-			if (c is MyGuiControlButton)
-			{
-				m_elemtents.Add(c);
-				if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonOptions))
-					button11 = (MyGuiControlButton)c;
-			}
-		}
-		if (button11 != null)
-		{
-			int index = Controls.IndexOf(button11);
-			MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
-			Controls.Add(newGameButton);
-			m_elemtents.Add(newGameButton);
-			newGameButton.Name = button11.Name;
-			Controls[index] = newGameButton;
-			newGameButton.SetToolTip(button11.Tooltips);
-		}
-		MyGuiControlButton button12 = null;
-		foreach (var c in Controls)
-		{
-			if (c is MyGuiControlButton)
-			{
-				m_elemtents.Add(c);
-				if (((MyGuiControlButton)c).Text == MyTexts.GetString(MyCommonTexts.ScreenMenuButtonExitToMainMenu))
-					button12 = (MyGuiControlButton)c;
-			}
-		}
-		if (button12 != null)
-		{
-			int index = Controls.IndexOf(button12);
-			MyGuiControlButton newGameButton = MakeButton(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, -1000, -1000), MyCommonTexts.ScreenMenuButtonCampaign, NullButtonAction);
-			Controls.Add(newGameButton);
-			m_elemtents.Add(newGameButton);
-			newGameButton.Name = button12.Name;
-			Controls[index] = newGameButton;
-			newGameButton.SetToolTip(button12.Tooltips);
-		}
-		
-
-
-		m_elementGroup = new MyGuiControlElementGroup();
+			m_elementGroup = new MyGuiControlElementGroup();
 		Vector2 minSizeGui = MyGuiControlButton.GetVisualStyle(MyGuiControlButtonStyleEnum.Default).NormalTexture.MinSizeGui;
 		Vector2 leftButtonPositionOrigin = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_BOTTOM) + new Vector2(minSizeGui.X / 2f, 0f) + new Vector2(15f, 0f) / MyGuiConstants.GUI_OPTIMAL_SIZE;
 		leftButtonPositionOrigin.Y += 0.043f;
