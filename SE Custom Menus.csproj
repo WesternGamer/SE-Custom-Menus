@@ -31,9 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>C:\Users\Kevin Nguyen\Downloads\Harmony.2.0.4.0\net472\0Harmony.dll</HintPath>
@@ -57,13 +54,8 @@
     <Reference Include="SpaceEngineers.Game">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\SpaceEngineers.Game.dll</HintPath>
     </Reference>
-    <Reference Include="Steamworks.NET">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\Steamworks.NET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,17 +94,9 @@
     <Compile Include="PluginMenus\MyMenuPacksMenu.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utill\LocalMenuPack.cs" />
-    <Compile Include="Utill\PluginStatus.cs" />
     <Compile Include="Utill\MyCustomFileUtill.cs" />
     <Compile Include="Utill\MyCustomReloadTestComponent.cs" />
     <Compile Include="Utill\MyCustomTexts.cs" />
-    <Compile Include="Utill\MyMenuPacksFinder.cs" />
-    <Compile Include="Utill\MyXmlUtill.cs" />
-    <Compile Include="Utill\PluginData.cs" />
-    <Compile Include="Utill\SteamAPI.cs" />
-    <Compile Include="Utill\SteamPlugin.cs" />
-    <Compile Include="Utill\WorkshopPlugin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
