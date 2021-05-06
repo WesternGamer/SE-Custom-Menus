@@ -129,8 +129,8 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 				m_warningNotifications.Add(MyCommonTexts.PerformanceWarningHeading_ExperimentalMode);
 			}
 		}
-		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 1f, 1f, "MenuPacks\\Textures\\MainMenu\\Kerbal_Space_Program_High_Res_Logo.png");
-		DrawPerformanceWarning(0, 0, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER, "MenuPacks\\Textures\\hud_bg_performance.png", 1f, 1f);
+		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 1f, 1f, "MenuPack1\\Textures\\minecraft.png");
+		DrawPerformanceWarning(0, 0, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER, "MenuPack1\\Textures\\toasts.png", 1f, 1f);
 		if (DrawBuildInformation)
 		{
 			DrawObfuscationStatus();
@@ -216,7 +216,7 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 		if (m_warningNotifications.Count != 0)
 		{
 			Vector2 position = MyGuiManager.ComputeFullscreenGuiCoordinate(alignment, xPosition, yPosition);
-			position -= new Vector2(MyGuiConstants.TEXTURE_HUD_BG_PERFORMANCE.SizeGui.X / 1.5f, 0f);
+			position -= new Vector2(length / 1.5f, 0f);
 			
 			MyGuiManager.DrawSpriteBatch(Path.GetFullPath(Path.Combine(MyFileSystem.UserDataPath, texturepath)), position, new Vector2(length / 1.5f, width / 1.5f), Color.White, MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_CENTER);
 			StringBuilder stringBuilder = new StringBuilder();
