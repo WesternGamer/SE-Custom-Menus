@@ -108,7 +108,7 @@
     <Compile Include="Utill\MyCustomReloadTestComponent.cs" />
     <Compile Include="Utill\MyCustomTexts.cs" />
     <Compile Include="Utill\MyMenuPacksFinder.cs" />
-    <Compile Include="Utill\MyXmlUtill.cs" />
+    <Compile Include="Utill\MenuPacksConfig.cs" />
     <Compile Include="Utill\PluginData.cs" />
     <Compile Include="Utill\SteamAPI.cs" />
     <Compile Include="Utill\SteamPlugin.cs" />

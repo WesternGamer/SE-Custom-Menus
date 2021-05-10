@@ -27,7 +27,7 @@ namespace SE_Custom_Menus.Utill
             set => plugins[key] = value;
         }
 
-        public MyMenuPacksFinder(string mainDirectory, MyXmlUtill config)
+        public MyMenuPacksFinder(string mainDirectory, MenuPacksConfig config)
         {
 
 
@@ -143,10 +143,8 @@ namespace SE_Custom_Menus.Utill
             
             try
             {
-                AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
-                PrincipalPermission principalPerm = new PrincipalPermission(null, "Administrators");
-                principalPerm.Demand();
-                ZipFile.CreateFromDirectory(input, output);
+                ZipFile.ExtractToDirectory(input, output);
+                MyLog.Default.WriteLine("[SE Custom Menus]: Unzipped Menu Pack " + input);
             }
             catch (Exception e)
             {

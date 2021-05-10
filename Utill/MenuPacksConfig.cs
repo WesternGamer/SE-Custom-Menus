@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Permissions;
 using System.Xml;
 using System.Xml.Serialization;
 using VRage.FileSystem;
@@ -11,7 +12,7 @@ using VRage.Utils;
 
 namespace SE_Custom_Menus.Utill
 {
-    public partial class MyXmlUtill
+    public partial class MenuPacksConfig
     {
         private const string fileName = "config.xml";
 
@@ -36,7 +37,7 @@ namespace SE_Custom_Menus.Utill
 
         public int Count => enabledPlugins.Count;
 
-        public MyXmlUtill()
+        public MenuPacksConfig()
         {
 
         }
@@ -66,13 +67,13 @@ namespace SE_Custom_Menus.Utill
             enabledPlugins.Clear();
         }
 
-
+        
         public void Save()
         {
             try
             {
                 MyLog.Default.WriteLine("[SE Custom Menus]: Saving config.");
-                XmlSerializer serializer = new XmlSerializer(typeof(MyXmlUtill));
+                XmlSerializer serializer = new XmlSerializer(typeof(MenuPacksConfig));
                 if (File.Exists(filePath))
                     File.Delete(filePath);
                 FileStream fs = File.OpenWrite(filePath);
@@ -86,16 +87,16 @@ namespace SE_Custom_Menus.Utill
             }
         }
 
-        public static MyXmlUtill Load(string mainDirectory)
+        public static MenuPacksConfig Load(string mainDirectory)
         {
             string path = Path.Combine(mainDirectory, fileName);
             if (File.Exists(path))
             {
                 try
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(MyXmlUtill));
+                    XmlSerializer serializer = new XmlSerializer(typeof(MenuPacksConfig));
                     FileStream fs = File.OpenRead(path);
-                    MyXmlUtill config = (MyXmlUtill)serializer.Deserialize(fs);
+                    MenuPacksConfig config = (MenuPacksConfig)serializer.Deserialize(fs);
                     fs.Close();
                     config.filePath = path;
                     return config;
@@ -107,7 +108,7 @@ namespace SE_Custom_Menus.Utill
             }
 
 
-            var temp = new MyXmlUtill();
+            var temp = new MenuPacksConfig();
             temp.filePath = path;
             return temp;
         }

@@ -11,10 +11,9 @@ using VRage.Utils;
 public class StartUp : IPlugin
 {
     public MyMenuPacksFinder List { get; }
-    public MyXmlUtill Config { get; }
+    public MenuPacksConfig Config { get; }
     public StartUp()
     {
-        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
         MyLog.Default.WriteLine("[SE Custom Menus]: Plugin Loaded");
         Harmony harmony = new Harmony("SE_Custom_Menus");
         harmony.PatchAll();
@@ -26,7 +25,7 @@ public class StartUp : IPlugin
         if (!Directory.Exists(tempFilePath))
             Directory.CreateDirectory(tempFilePath);
 
-        Config = MyXmlUtill.Load(menuPacksPath);
+        Config = MenuPacksConfig.Load(menuPacksPath);
         List = new MyMenuPacksFinder(menuPacksPath, Config);
 
         MyLog.Default.WriteLine("[SE Custom Menus]: Loading config.");
