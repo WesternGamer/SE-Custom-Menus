@@ -95,24 +95,16 @@
     <Compile Include="MainMenuScreens\MyCustomMainMenu.cs" />
     <Compile Include="MainMenuScreens\MyCustomMainMenuBase.cs" />
     <Compile Include="MyOldOptionsAccessMenu.cs" />
-    <Compile Include="Patch1.cs" />
+    <Compile Include="Utill\Patch1.cs" />
     <Compile Include="PluginMenus\MyOldButtonsAccessMenu.cs" />
     <Compile Include="MyCustomOptionsMenu.cs" />
     <Compile Include="MainMenuScreens\MyOldMainMenu.cs" />
     <Compile Include="PluginMenus\MyMenuPacksMenu.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utill\LocalMenuPack.cs" />
-    <Compile Include="Utill\PluginStatus.cs" />
     <Compile Include="Utill\MyCustomFileUtill.cs" />
     <Compile Include="Utill\MyCustomReloadTestComponent.cs" />
     <Compile Include="Utill\MyCustomTexts.cs" />
-    <Compile Include="Utill\MyMenuPacksFinder.cs" />
-    <Compile Include="Utill\MenuPacksConfig.cs" />
-    <Compile Include="Utill\PluginData.cs" />
-    <Compile Include="Utill\SteamAPI.cs" />
-    <Compile Include="Utill\SteamPlugin.cs" />
-    <Compile Include="Utill\WorkshopPlugin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

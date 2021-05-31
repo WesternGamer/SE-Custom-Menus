@@ -210,60 +210,6 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 					Controls[index] = newGameButton;
 					newGameButton.SetToolTip(button7.Tooltips);
 				}
-				MyGuiControlNews News = null;
-				foreach (var c in Controls)
-				{
-					if (c is MyGuiControlNews)
-					{
-						m_elemtents.Add(c);
-						if (((MyGuiControlNews)c).Position == MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM) - 5f * MyGuiConstants.MENU_BUTTONS_POSITION_DELTA)
-							News = (MyGuiControlNews)c;
-					}
-				}
-				if (News != null)
-				{
-					int index = Controls.IndexOf(News);
-					News = new MyGuiControlNews
-					{
-						Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
-						Size = new Vector2(0.4f, 0.28f),
-						OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
-					};
-					Controls.Add(News);
-					float num = News.Size.X - 0.004f;
-					float num2 = 0.407226563f;
-					float num3 = num * num2 * 1.33333337f;
-					Vector2 size = new Vector2(News.Size.X, num3 + 0.052f);
-					Controls[index] = News;
-
-				}
-				MyGuiControlDLCBanners DlcBanners = null;
-				foreach (var c in Controls)
-				{
-					if (c is MyGuiControlDLCBanners)
-					{
-						m_elemtents.Add(c);
-						if (((MyGuiControlDLCBanners)c).Visible == false)
-							DlcBanners = (MyGuiControlDLCBanners)c;
-					}
-				}
-				if (DlcBanners != null)
-				{
-					int index = Controls.IndexOf(DlcBanners);
-					DlcBanners = new MyGuiControlDLCBanners
-					{
-						Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
-						Size = new Vector2(0.4f, 0.28f),
-						OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
-					};
-					Controls.Add(DlcBanners);
-					float num = DlcBanners.Size.X - 0.004f;
-					float num2 = 0.407226563f;
-					float num3 = num * num2 * 1.33333337f;
-					Vector2 size = new Vector2(DlcBanners.Size.X, num3 + 0.052f);
-					Controls[index] = DlcBanners;
-
-				}
 			}
 		}
 
@@ -370,59 +316,6 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 				newGameButton.Name = button12.Name;
 				Controls[index] = newGameButton;
 				newGameButton.SetToolTip(button12.Tooltips);
-			}
-			MyGuiControlNews News = null;
-			foreach (var c in Controls)
-			{
-				if (c is MyGuiControlNews)
-				{
-					m_elemtents.Add(c);
-					if (((MyGuiControlNews)c).Position == MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM) - 5f * MyGuiConstants.MENU_BUTTONS_POSITION_DELTA)
-						News = (MyGuiControlNews)c;
-				}
-			}
-			if (News != null)
-			{
-				int index = Controls.IndexOf(News);
-				News = new MyGuiControlNews
-				{
-					Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
-					Size = new Vector2(0.4f, 0.28f),
-					OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
-				};
-				Controls.Add(News);
-				float num = News.Size.X - 0.004f;
-				float num2 = 0.407226563f;
-				float num3 = num * num2 * 1.33333337f;
-				Vector2 size = new Vector2(News.Size.X, num3 + 0.052f);
-				Controls[index] = News;
-
-			}
-			MyGuiControlDLCBanners DlcBanners = null;
-			foreach (var c in Controls)
-			{
-				if (c is MyGuiControlDLCBanners)
-				{
-					m_elemtents.Add(c);
-					if (((MyGuiControlDLCBanners)c).Visible == false)
-						DlcBanners = (MyGuiControlDLCBanners)c;
-				}
-			}
-			if (DlcBanners != null)
-			{
-				int index = Controls.IndexOf(DlcBanners);
-				DlcBanners = new MyGuiControlDLCBanners
-				{
-					Position = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, -1000, -1000),
-					Size = new Vector2(0.4f, 0.28f),
-					OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP
-				};
-				Controls.Add(DlcBanners);
-				float num = DlcBanners.Size.X - 0.004f;
-				float num2 = 0.407226563f;
-				float num3 = num * num2 * 1.33333337f;
-				Vector2 size = new Vector2(DlcBanners.Size.X, num3 + 0.052f);
-				Controls[index] = DlcBanners;
 			}
 		}
 			m_elementGroup = new MyGuiControlElementGroup();

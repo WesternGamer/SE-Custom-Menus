@@ -129,8 +129,8 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 				m_warningNotifications.Add(MyCommonTexts.PerformanceWarningHeading_ExperimentalMode);
 			}
 		}
-		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 1f, 1f, "MenuPack1\\Textures\\minecraft.png");
-		DrawPerformanceWarning(0, 0, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER, "MenuPack1\\Textures\\toasts.png", 1f, 1f);
+		DrawGameLogo(m_transitionAlpha, MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 44, 68), MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP, 1f, 1f, "MenuPacks\\MenuPack\\Textures\\minecraft.png");
+		DrawPerformanceWarning(0, 0, MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_CENTER, "MenuPacks\\MenuPack\\Textures\\toasts.png", 0.3f, 0.1f);
 		if (DrawBuildInformation)
 		{
 			DrawObfuscationStatus();
