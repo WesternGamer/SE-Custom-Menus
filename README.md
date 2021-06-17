@@ -1,5 +1,4 @@
-# SE-Custom-Menus [![CodeQL](https://github.com/WesternGamer/SE-Custom-Menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/WesternGamer/SE-Custom-Menus/actions/workflows/codeql-analysis.yml)
-
+# SE-Custom-Menus 
 
 
 Warning: Do not use the dlls in the bin folder for anything else than developing the plugin. These dlls belong to Keen Software House and other companies.
