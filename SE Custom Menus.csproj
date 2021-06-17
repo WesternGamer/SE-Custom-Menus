@@ -95,7 +95,7 @@
     <Compile Include="MainMenuScreens\MyCustomMainMenu.cs" />
     <Compile Include="MainMenuScreens\MyCustomMainMenuBase.cs" />
     <Compile Include="MyOldOptionsAccessMenu.cs" />
-    <Compile Include="Utill\Patch1.cs" />
+    <Compile Include="Utill\Patches\MyMainMenuPatch.cs" />
     <Compile Include="PluginMenus\MyOldButtonsAccessMenu.cs" />
     <Compile Include="MyCustomOptionsMenu.cs" />
     <Compile Include="MainMenuScreens\MyOldMainMenu.cs" />
@@ -107,4 +107,7 @@
     <Compile Include="Utill\MyCustomTexts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "D:\Projects\SE Custom Menus\PostBuild.bat"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -27,15 +27,13 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 {
 	protected const float TEXT_LINE_HEIGHT = 0.014f;
 
-	protected const int INITIAL_TRANSITION_TIME = 1500;
-
 	private MyGuiControlLabel m_warningLabel = new MyGuiControlLabel();
 
 	protected bool m_pauseGame;
 
 	protected bool m_musicPlayed;
 
-
+	public bool ENABLE_DETAILED_BUILD_INFO = true;
 
 	private static bool m_firstLoadup = true;
 
@@ -245,18 +243,36 @@ public abstract class MyCustomMainMenuBase : MyGuiScreenBase
 
 	private void DrawAppVersion()
 	{
-		Vector2 zero = Vector2.Zero;
-		Vector2 normalizedCoord = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, 8, 8);
-		if (!string.IsNullOrEmpty(MyGameService.BranchName))
+		if (ENABLE_DETAILED_BUILD_INFO)
 		{
-			BranchName.Clear();
-			BranchName.Append(" ");
-			BranchName.Append(MyGameService.BranchName);
-			zero = MyGuiManager.MeasureString("BuildInfoHighlight", BranchName, 0.6f);
-			MyGuiManager.DrawString("BuildInfoHighlight", BranchName.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
-			normalizedCoord.X -= zero.X;
+			Vector2 zero = Vector2.Zero;
+			Vector2 normalizedCoord = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, 8, 8);
+			if (!string.IsNullOrEmpty(MyGameService.BranchName))
+			{
+				BranchName.Clear();
+				BranchName.Append(" Branch: ");
+				BranchName.Append(MyGameService.BranchName);
+				zero = MyGuiManager.MeasureString("BuildInfoHighlight", BranchName, 0.6f);
+				MyGuiManager.DrawString("BuildInfoHighlight", BranchName.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
+				normalizedCoord.X -= zero.X;
+			}
+			MyGuiManager.DrawString("BuildInfo", "Space Engineers Version: " + MyFinalBuildConstants.APP_VERSION_STRING_DOTS.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
 		}
-		MyGuiManager.DrawString("BuildInfo", MyFinalBuildConstants.APP_VERSION_STRING_DOTS.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
+		else
+        {
+			Vector2 zero = Vector2.Zero;
+			Vector2 normalizedCoord = MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM, 8, 8);
+			if (!string.IsNullOrEmpty(MyGameService.BranchName))
+			{
+				BranchName.Clear();
+				BranchName.Append(" ");
+				BranchName.Append(MyGameService.BranchName);
+				zero = MyGuiManager.MeasureString("BuildInfoHighlight", BranchName, 0.6f);
+				MyGuiManager.DrawString("BuildInfoHighlight", BranchName.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
+				normalizedCoord.X -= zero.X;
+			}
+			MyGuiManager.DrawString("BuildInfo", MyFinalBuildConstants.APP_VERSION_STRING_DOTS.ToString(), normalizedCoord, 0.6f, new Color(MyGuiConstants.LABEL_TEXT_COLOR * m_transitionAlpha, 0.6f), MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_BOTTOM);
+		}
 	}
 
 	private void DrawSteamStatus()

@@ -133,16 +133,6 @@ public class MyCustomMainMenu : MyCustomMainMenuBase
 		Controls.Add(m_dlcBannersControl);
 	}
 
-	private bool IsControllerHelpGoingToFitInMiddleBottomOfScreen()
-	{
-		_ = MySandboxGame.Config;
-		if ((float)MyVideoSettingsManager.CurrentDeviceSettings.BackBufferWidth / (float)MyVideoSettingsManager.CurrentDeviceSettings.BackBufferHeight < 1.77777779f)
-		{
-			return false;
-		}
-		return true;
-	}
-
 	private void CreateInGameMenu(Vector2 leftButtonPositionOrigin, out Vector2 lastButtonPosition)
 	{
 		base.GamepadHelpTextId = MySpaceTexts.MainMenuScreen_Help_ScreenIngame;

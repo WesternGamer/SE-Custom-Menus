@@ -41,6 +41,10 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 
 	private MyBadgeHelper m_myBadgeHelper;
 
+	private static StringBuilder BranchName = new StringBuilder(50);
+
+	public bool ENABLE_DETAILED_BUILD_INFO = true;
+
 	private MyGuiScreenIntroVideo m_backgroundScreen;
     private MyGuiControlElementGroup m_elemtents;
 
@@ -336,10 +340,6 @@ public class MyOldMainMenu : MyGuiScreenMainMenu
 		MyGuiControlLabel myGuiControlLabel = new MyGuiControlLabel(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, 49, 82));
 		myGuiControlLabel.Name = MyGuiScreenBase.GAMEPAD_HELP_LABEL_NAME;
 		Controls.Add(myGuiControlLabel);
-		//Draws the Keen Software House Logo in the top righthand corner.
-		MyGuiControlPanel myGuiControlPanel = new MyGuiControlPanel(MyGuiManager.ComputeFullscreenGuiCoordinate(MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP, 49, 82), MyGuiConstants.TEXTURE_KEEN_LOGO.MinSizeGui, null, null, null, MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_TOP);
-		myGuiControlPanel.BackgroundTexture = MyGuiConstants.TEXTURE_KEEN_LOGO;
-		Controls.Add(myGuiControlPanel);
 		//Refreshes the badges under the game logo.
 		m_myBadgeHelper.RefreshGameLogo();
 		CheckLowMemSwitchToLow();
